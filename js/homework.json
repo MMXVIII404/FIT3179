@@ -17,7 +17,7 @@
     },
     {
       "data": {
-        "url": "Earthquake(2006-2016).csv"
+        "url": "https://raw.githubusercontent.com/MMXVIII404/FIT3179/main/data/Earthquake(2006-2016).csv"
       },
       "mark": {"type": "circle", "tooltip": {"content": "data"}},
       "encoding": {
