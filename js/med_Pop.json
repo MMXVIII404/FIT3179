@@ -1,0 +1,102 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "width": 500,
+  "height": 400,
+  "title": "Median Age VS Population",
+  "data": {
+    "url": "https://raw.githubusercontent.com/MMXVIII404/FIT3179/main/data/population_by_country_2020.csv"
+  },
+  "params": [
+    {
+      "name": "Population_Above",
+      "value": 0,
+      "bind": {
+        "input": "range",
+        "min": 0,
+        "max": 1000000000,
+        "step": 2000000,
+        "name": "Minimum Population: "
+      }
+    }
+  ],
+  "transform": [
+    {"filter": "datum.Population > 50000000"},
+    {"filter": "datum.Med_Age > 0"},
+    {"filter": "datum.Population > Population_Above"}
+  ],
+  "encoding": {
+    "x": {
+      "field": "Population",
+      "type": "quantitative",
+      "title": "Population",
+      "axis": {"tickCount": 5},
+      "scale": {"type": "log", "domain": [10000000, 10000000000]}
+    },
+    "y": {
+      "field": "Med_Age",
+      "type": "quantitative",
+      "axis": {"tickCount": 5},
+      "scale": {"domain": [10, 50]}
+    }
+  },
+  "layer": [
+    {
+      "selection": {
+        "country_highlight": {
+          "type": "multi",
+          "fields": ["Country"],
+          "bind": "legend"
+        }
+      },
+      "mark": "circle",
+      "encoding": {
+        "size": {
+          "field": "Population",
+          "type": "quantitative",
+          "scale": {
+            "type": "threshold",
+            "domain": [80000000, 200000000, 1000000000, 5000000000, 1000000000],
+            "range": [10, 50, 150, 200, 300, 400]
+          }
+        },
+        "color": {"field": "Country", "type": "nominal"},
+        "opacity": {
+          "condition": {"selection": "country_highlight", "value": 0.8},
+          "value": 0.2
+        },
+        "tooltip": [
+          {"field": "Country", "type": "nominal"},
+          {"field": "Population", "type": "quantitative", "format": ","},
+          {"field": "Med_Age", "type": "quantitative", "format": ","}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "middle",
+        "dx": -12,
+        "fontSize": 11.5,
+        "fontStyle": "italic"
+      },
+      "encoding": {
+        "text": {"field": "Country", "type": "nominal"},
+        "color": {"value": "black"},
+        "opacity": {
+          "condition": {
+            "test": "datum['Country'] == 'China' || datum['Country'] == 'India' || datum['Country'] == 'Australia' || datum['Country'] == 'New Zealand' || datum['Country'] == 'Japan' || datum['Country'] == 'United States' ||  datum['Country'] == 'DR Congo'",
+            "value": 1
+          },
+          "value": 0
+        },
+        "tooltip": [
+          {"field": "Country", "type": "nominal"},
+          {"field": "Population", "type": "quantitative", "format": ","},
+          {"field": "Med_Age", "type": "quantitative", "format": ","}
+        ]
+      }
+    }
+  ],
+  "config": {}
+}
