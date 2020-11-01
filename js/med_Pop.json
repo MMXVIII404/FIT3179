@@ -29,7 +29,7 @@
       "field": "Population",
       "type": "quantitative",
       "title": "Population",
-      "axis": {"tickCount": 5},
+      "axis": {"tickCount": 3},
       "scale": {"type": "log", "domain": [10000000, 10000000000]}
     },
     "y": {
@@ -44,7 +44,7 @@
       "selection": {
         "country_highlight": {
           "type": "multi",
-          "fields": ["Country"],
+          "fields": ["Continent"],
           "bind": "legend"
         }
       },
@@ -56,15 +56,16 @@
           "scale": {
             "type": "threshold",
             "domain": [80000000, 200000000, 1000000000, 5000000000, 1000000000],
-            "range": [10, 50, 150, 200, 300, 400]
+            "range": [30, 80, 150, 200, 300, 400]
           }
         },
-        "color": {"field": "Country", "type": "nominal"},
+        "color": {"field": "Continent", "type": "nominal"},
         "opacity": {
           "condition": {"selection": "country_highlight", "value": 0.8},
           "value": 0.2
         },
         "tooltip": [
+          {"field": "Continent", "type": "nominal"},
           {"field": "Country", "type": "nominal"},
           {"field": "Population", "type": "quantitative", "format": ","},
           {"field": "Med_Age", "type": "quantitative", "format": ","}
@@ -91,6 +92,7 @@
           "value": 0
         },
         "tooltip": [
+          {"field": "Continent", "type": "nominal"},
           {"field": "Country", "type": "nominal"},
           {"field": "Population", "type": "quantitative", "format": ","},
           {"field": "Med_Age", "type": "quantitative", "format": ","}
