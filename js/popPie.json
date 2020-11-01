@@ -1,0 +1,39 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "width": 500,
+  "height": 400,
+  "title": "Continent Population Pie Chart",
+  "data": {
+    "url": "https://raw.githubusercontent.com/MMXVIII404/FIT3179/main/data/population_by_country_2020.csv"
+  },
+  "mark": "arc",
+  "encoding": {
+    "theta": {"field": "Population", "type": "quantitative"},
+    "color": {
+      "field": "Continent",
+      "type": "nominal",
+      "scale": {
+        "range": [
+          "steelblue",
+          "orange",
+          "lightblue",
+          "red",
+          "#47B39C",
+          "#FFC154",
+          "#EC6B56",
+          "#AADEA7",
+          "#D08F8E",
+          "#80BCCB",
+          "#F0F0F0"
+        ]
+      }
+    },
+    "tooltip": [
+      {"field": "Continent", "type": "nominal"},
+      {"field": "Country", "type": "nominal"},
+      {"field": "Population", "type": "nominal"}
+    ]
+  },
+  "view": {"stroke": null},
+  "config": {}
+}
