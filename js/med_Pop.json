@@ -14,13 +14,12 @@
         "input": "range",
         "min": 0,
         "max": 1000000000,
-        "step": 2000000,
+        "step": 100000,
         "name": "Minimum Population: "
       }
     }
   ],
   "transform": [
-    {"filter": "datum.Population > 50000000"},
     {"filter": "datum.Med_Age > 0"},
     {"filter": "datum.Population > Population_Above"}
   ],
@@ -29,8 +28,8 @@
       "field": "Population",
       "type": "quantitative",
       "title": "Population",
-      "axis": {"tickCount": 3},
-      "scale": {"type": "log", "domain": [10000000, 10000000000]}
+      "axis": {"tickCount": 6},
+      "scale": {"type": "log", "domain": [10000, 10000000000]}
     },
     "y": {
       "field": "Med_Age",
@@ -86,7 +85,7 @@
         "color": {"value": "black"},
         "opacity": {
           "condition": {
-            "test": "datum['Country'] == 'China' || datum['Country'] == 'India' || datum['Country'] == 'Australia' || datum['Country'] == 'New Zealand' || datum['Country'] == 'Japan' || datum['Country'] == 'United States' ||  datum['Country'] == 'DR Congo'",
+            "test": "datum['Country'] == 'China' || datum['Country'] == 'India' || datum['Country'] == 'Australia' || datum['Country'] == 'New Zealand' || datum['Country'] == 'Japan' || datum['Country'] == 'United States' ||  datum['Country'] == 'Niger'",
             "value": 1
           },
           "value": 0
