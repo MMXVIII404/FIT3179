@@ -32,6 +32,5 @@
       {"field": "Continent", "type": "nominal"},
       {"field": "Population", "type": "quantitative", "format": ","}
     ]
-  },
-  "config": {}
+  }
 }
