@@ -31,9 +31,7 @@
     "tooltip": [
       {"field": "Continent", "type": "nominal"},
       {"field": "Country", "type": "nominal"},
-      {"field": "Population", "type": "nominal"}
+      {"field": "Population", "type": "quantitative", "format": ","}
     ]
-  },
-  "view": {"stroke": null},
-  "config": {}
+  }
 }
