@@ -1,0 +1,63 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "width": 500,
+  "height": 400,
+  "title": "2020 World Urban Population Rate",
+  "data": {
+    "url": "https://raw.githubusercontent.com/MMXVIII404/FIT3179/main/data/population_by_country_2020.csv"
+  },
+  "params": [
+    {
+      "name": "Continent_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "ASIA (EX. NEAR EAST)",
+          "BALTICS",
+          "C.W. OF IND. STATES",
+          "EASTERN EUROPE",
+          "LATIN AMER. & CARIB",
+          "NEAR EAST",
+          "NORTHERN AFRICA",
+          "NORTHERN AMERICA",
+          "OCEANIA",
+          "SUB-SAHARAN AFRICA",
+          "WESTERN EUROPE"
+        ],
+        "labels": [
+          "Show All",
+          "ASIA (EX. NEAR EAST)",
+          "BALTICS",
+          "C.W. OF IND. STATES",
+          "EASTERN EUROPE",
+          "LATIN AMER. & CARIB",
+          "NEAR EAST",
+          "NORTHERN AFRICA",
+          "NORTHERN AMERICA",
+          "OCEANIA",
+          "SUB-SAHARAN AFRICA",
+          "WESTERN EUROPE"
+        ],
+        "name": "Continent Selection: "
+      }
+    }
+  ],
+  "transform": [
+    {"filter": "datum.Urban_Pop>0"},
+    {
+      "filter": "Continent_selection == null || datum.Continent == Continent_selection"
+    }
+  ],
+  "mark": {"type": "bar", "fill": "#4C78A8"},
+  "encoding": {
+    "x": {"field": "Country", "type": "ordinal"},
+    "y": {"field": "Urban_Pop", "type": "quantitative"},
+    "tooltip": [
+      {"field": "Country", "type": "nominal"},
+      {"field": "Urban_Pop", "type": "quantitative"},
+      {"field": "Population", "type": "quantitative", "format": ","}
+    ]
+  },
+  "config": {}
+}
